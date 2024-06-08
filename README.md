@@ -41,7 +41,7 @@ For other cases please check the commands below.
 ➜ docker-compose run web rake routes |grep 'test_courses'               # List routes with 'test_courses' in it
 ➜ docker ps                                                             # List all docker processes
 ➜ docker attach <CONTAINER_NAME>                                        # Attach to the application container (for when you're trying to use Debugger/Byebug)
-➜ heroku run --app kuru-studio-social-server bash                       # Attach to the Heroku process
+➜ heroku run --app kuru-studio-server bash                              # Attach to the Heroku process
 ```
 
 ### Updating the environment credentials

@@ -1,6 +1,6 @@
 # Story Title
 
-[This is the Issue Title](https://github.com/kuru-studio/kuru-studio-social-server/issues/1)
+[This is the Issue Title](https://github.com/kuru-studio/kuru-studio-server/issues/1)
 
 ## Changes made
 

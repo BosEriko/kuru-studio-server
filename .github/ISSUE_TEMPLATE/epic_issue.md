@@ -15,5 +15,5 @@ This Feature will...
 
 ## List of Tasks (Complete in order)
 
-1. [ ] [Task 1: Awesome Task Title](https://github.com/kuru-studio/kuru-studio-social-server/issues/1)
-2. [ ] [Task 2: Awesome Task Title](https://github.com/kuru-studio/kuru-studio-social-server/issues/2)
+1. [ ] [Task 1: Awesome Task Title](https://github.com/kuru-studio/kuru-studio-server/issues/1)
+2. [ ] [Task 2: Awesome Task Title](https://github.com/kuru-studio/kuru-studio-server/issues/2)

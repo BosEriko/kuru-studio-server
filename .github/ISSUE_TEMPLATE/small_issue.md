@@ -17,4 +17,4 @@ This Task will...
 
 <!-- The link below should link to its Epic Parent. -->
 
-[Feature: Awesome Feature Title](https://github.com/kuru-studio/kuru-studio-social-server/issues/1)
+[Feature: Awesome Feature Title](https://github.com/kuru-studio/kuru-studio-server/issues/1)
