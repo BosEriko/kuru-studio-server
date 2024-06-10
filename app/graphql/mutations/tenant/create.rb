@@ -7,13 +7,26 @@ module Mutations
 
       argument :tenant_provider, TenantProviderSignupData, required: false
 
-      type Types::TenantType
+      field :tenant, Types::TenantType, null: true
+      field :errors, [String], null: true
 
       def resolve(tenant_provider: nil)
-        Tenant.create!(
-          email: tenant_provider&.[](:credentials)&.[](:tenant_identifier),
+        tenant = ::Tenant.new(
+          tenant_identifier: tenant_provider&.[](:credentials)&.[](:tenant_identifier),
           password: tenant_provider&.[](:credentials)&.[](:password)
         )
+
+        if tenant.save
+          {
+            tenant: tenant,
+            errors: []
+          }
+        else
+          {
+            tenant: nil,
+            errors: tenant.errors.full_messages
+          }
+        end
       end
     end
   end
