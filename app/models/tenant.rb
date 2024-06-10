@@ -1,5 +1,8 @@
 class Tenant < ApplicationRecord
+  has_secure_password
+
   validates :api_key, uniqueness: true
+  validates :tenant_identifier, presence: true, uniqueness: true
 
   has_many :users, dependent: :destroy
   has_many :posts, dependent: :destroy
