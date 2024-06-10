@@ -3,6 +3,8 @@ class CreateTenants < ActiveRecord::Migration[7.0]
     create_table :tenants, id: :uuid do |t|
       t.string :firebase_project_id
       t.string :api_key
+      t.string :tenant_identifier, null: false
+      t.string :password_digest
       t.text :allowed_domains, array: true, default: []
       t.text :included_features, array: true, default: []
 
@@ -10,5 +12,6 @@ class CreateTenants < ActiveRecord::Migration[7.0]
     end
 
     add_index :tenants, :api_key, unique: true
+    add_index :tenants, :tenant_identifier, unique: true
   end
 end
