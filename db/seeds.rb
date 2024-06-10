@@ -47,9 +47,27 @@ comments = [
 ]
 
 tenants = [
-  { api_key: "kurustudio", allowed_domains: ["kuru.studio", "server.kuru.studio", "social.kuru.studio"], included_features: ["shop"], firebase_project_id: "kuru-studio-social-firebase-dv" },
-  { api_key: "purrintables", allowed_domains: ["purrintables.com"], included_features: ["shop"], firebase_project_id: "purrintables-firebase-dv" },
-  { api_key: "boseriko", allowed_domains: ["boseriko.com"], included_features: ["shop"], firebase_project_id: "boseriko-firebase-dv" },
+  {
+    tenant_identifier: "kurustudio",
+    api_key: "kurustudio",
+    allowed_domains: ["kuru.studio", "server.kuru.studio", "social.kuru.studio"],
+    included_features: ["shop"],
+    firebase_project_id: "kuru-studio-social-firebase-dv"
+  },
+  {
+    tenant_identifier: "purrintables",
+    api_key: "purrintables",
+    allowed_domains: ["purrintables.com"],
+    included_features: ["shop"],
+    firebase_project_id: "purrintables-firebase-dv"
+  },
+  {
+    tenant_identifier: "boseriko",
+    api_key: "boseriko",
+    allowed_domains: ["boseriko.com"],
+    included_features: ["shop"],
+    firebase_project_id: "boseriko-firebase-dv"
+  },
 ]
 
 # Create tenants
