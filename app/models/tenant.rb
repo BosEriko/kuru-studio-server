@@ -1,5 +1,8 @@
 class Tenant < ApplicationRecord
+  has_secure_password
+
   validates :api_key, uniqueness: true
+  validates :tenant_identifier, presence: true, uniqueness: true
 
   has_many :users, dependent: :destroy
   has_many :posts, dependent: :destroy
@@ -23,4 +26,12 @@ class Tenant < ApplicationRecord
       save
     end
   end
+
+  before_validation :generate_api_key, on: :create
+
+  private
+
+    def generate_api_key
+      self.api_key ||= SecureRandom.hex(20)
+    end
 end

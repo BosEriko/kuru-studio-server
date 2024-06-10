@@ -9,6 +9,7 @@ class GraphqlController < ApplicationController
     query = params[:query]
     operation_name = params[:operationName]
     context = {
+      current_admin: current_admin,
       current_user: current_user,
       current_tenant: current_tenant
     }
@@ -46,6 +47,21 @@ class GraphqlController < ApplicationController
     logger.error e.backtrace.join("\n")
 
     render json: { errors: [{ message: e.message, backtrace: e.backtrace }], data: {} }, status: 500
+  end
+
+  def current_admin
+    return nil if request.headers['X-tenant-token'].blank?
+    token = request.headers['X-tenant-token']
+    if token.blank?
+      return nil
+    else
+      crypt = ActiveSupport::MessageEncryptor.new(Rails.application.credentials.secret_key_base.byteslice(0..31))
+      decrypted_token = crypt.decrypt_and_verify(token)
+      tenant_id = decrypted_token.gsub('tenant-id:', '').to_i
+      Tenant.find(tenant_id)
+    end
+  rescue ActiveSupport::MessageVerifier::InvalidSignature
+    nil
   end
 
   def current_user
