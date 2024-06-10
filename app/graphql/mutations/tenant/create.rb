@@ -12,7 +12,7 @@ module Mutations
 
       def resolve(tenant_provider: nil)
         tenant = ::Tenant.new(
-          tenant_identifier: tenant_provider&.[](:credentials)&.[](:tenant_identifier),
+          identifier: tenant_provider&.[](:credentials)&.[](:identifier),
           password: tenant_provider&.[](:credentials)&.[](:password)
         )
 

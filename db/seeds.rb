@@ -48,7 +48,7 @@ comments = [
 
 tenants = [
   {
-    tenant_identifier: "kurustudio",
+    identifier: "kurustudio",
     password: "kurustudio",
     api_key: "kurustudio",
     allowed_domains: ["kuru.studio", "server.kuru.studio", "social.kuru.studio"],
@@ -56,14 +56,14 @@ tenants = [
     firebase_project_id: "kuru-studio-social-firebase-dv"
   },
   {
-    tenant_identifier: "purrintables",
+    identifier: "purrintables",
     password: "purrintables",
     allowed_domains: ["purrintables.com"],
     included_features: ["shop"],
     firebase_project_id: "purrintables-firebase-dv"
   },
   {
-    tenant_identifier: "boseriko",
+    identifier: "boseriko",
     password: "boseriko",
     allowed_domains: ["boseriko.com"],
     included_features: ["shop"],

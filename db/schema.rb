@@ -69,14 +69,14 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_05_103320) do
   create_table "tenants", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "firebase_project_id"
     t.string "api_key"
-    t.string "tenant_identifier", null: false
+    t.string "identifier", null: false
     t.string "password_digest"
     t.text "allowed_domains", default: [], array: true
     t.text "included_features", default: [], array: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["api_key"], name: "index_tenants_on_api_key", unique: true
-    t.index ["tenant_identifier"], name: "index_tenants_on_tenant_identifier", unique: true
+    t.index ["identifier"], name: "index_tenants_on_identifier", unique: true
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

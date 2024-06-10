@@ -11,7 +11,7 @@ module Mutations
       def resolve(credentials: nil)
         return unless credentials
 
-        tenant = ::Tenant.find_by tenant_identifier: credentials[:tenant_identifier]
+        tenant = ::Tenant.find_by identifier: credentials[:identifier]
 
         return unless tenant
         return unless tenant.authenticate(credentials[:password])
