@@ -49,6 +49,7 @@ comments = [
 tenants = [
   {
     tenant_identifier: "kurustudio",
+    password: "kurustudio",
     api_key: "kurustudio",
     allowed_domains: ["kuru.studio", "server.kuru.studio", "social.kuru.studio"],
     included_features: ["shop"],
@@ -56,6 +57,7 @@ tenants = [
   },
   {
     tenant_identifier: "purrintables",
+    password: "purrintables",
     api_key: "purrintables",
     allowed_domains: ["purrintables.com"],
     included_features: ["shop"],
@@ -63,6 +65,7 @@ tenants = [
   },
   {
     tenant_identifier: "boseriko",
+    password: "boseriko",
     api_key: "boseriko",
     allowed_domains: ["boseriko.com"],
     included_features: ["shop"],
