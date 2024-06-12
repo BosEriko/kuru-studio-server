@@ -81,7 +81,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_12_113537) do
   end
 
   create_table "tenants", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "firebase_project_id"
     t.string "api_key"
     t.string "identifier", null: false
     t.string "password_digest"

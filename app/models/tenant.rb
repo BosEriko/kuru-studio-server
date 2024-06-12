@@ -4,6 +4,8 @@ class Tenant < ApplicationRecord
   validates :api_key, uniqueness: true
   validates :identifier, presence: true, uniqueness: true
 
+  has_one :firebase, dependent: :destroy
+
   has_many :users, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -11,9 +13,6 @@ class Tenant < ApplicationRecord
   has_many :inventories, dependent: :destroy
   has_many :orders, dependent: :destroy
   has_many :products, dependent: :destroy
-
-  has_one :firebase, dependent: :destroy
-  accepts_nested_attributes_for :firebase
 
   %w(blog social tracker shop group forum block).each do |feature|
     define_method("is_#{feature}_enabled?") do

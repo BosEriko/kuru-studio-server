@@ -53,27 +53,36 @@ tenants = [
     api_key: "kurustudio",
     allowed_domains: ["kuru.studio", "server.kuru.studio", "social.kuru.studio"],
     included_features: ["shop"],
-    firebase_project_id: "kuru-studio-social-firebase-dv"
+    firebase: {
+      project_id: "kuru-studio-social-firebase-dv"
+    }
   },
   {
     identifier: "purrintables",
     password: "purrintables",
     allowed_domains: ["purrintables.com"],
     included_features: ["shop"],
-    firebase_project_id: "purrintables-firebase-dv"
+    firebase: {
+      project_id: "purrintables-firebase-dv"
+    }
   },
   {
     identifier: "boseriko",
     password: "boseriko",
     allowed_domains: ["boseriko.com"],
     included_features: ["shop"],
-    firebase_project_id: "boseriko-firebase-dv"
+    firebase: {
+      project_id: "boseriko-firebase-dv"
+    }
   },
 ]
 
 # Create tenants
-tenants.each_with_index do |tenant, index|
-  Tenant.create(tenant)
+tenants.each_with_index do |tenant_params, index|
+  firebase_params = tenant_params.delete(:firebase)
+  tenant = Tenant.new(tenant_params)
+  tenant.save!
+  tenant.create_firebase(firebase_params)
 end
 
 # Create users and posts

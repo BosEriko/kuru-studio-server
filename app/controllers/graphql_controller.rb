@@ -71,7 +71,7 @@ class GraphqlController < ApplicationController
       return nil
     else
       tenant = current_tenant
-      firebase_verifier = FirebaseServices::VerifierService.new(tenant.firebase_project_id)
+      firebase_verifier = FirebaseServices::VerifierService.new(tenant.firebase.project_id)
       decoded_token = firebase_verifier.decode(token)
       email = decoded_token["email"]
       user = User.find_by(
