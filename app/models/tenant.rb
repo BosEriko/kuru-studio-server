@@ -12,6 +12,9 @@ class Tenant < ApplicationRecord
   has_many :orders, dependent: :destroy
   has_many :products, dependent: :destroy
 
+  has_one :firebase, dependent: :destroy
+  accepts_nested_attributes_for :firebase
+
   %w(blog social tracker shop group forum block).each do |feature|
     define_method("is_#{feature}_enabled?") do
       included_features.include?(feature)

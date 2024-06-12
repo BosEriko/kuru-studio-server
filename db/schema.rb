@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_05_05_103320) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_12_113537) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
@@ -32,6 +32,20 @@ ActiveRecord::Schema[7.0].define(version: 2024_05_05_103320) do
     t.datetime "updated_at", null: false
     t.uuid "tenant_id", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
+  end
+
+  create_table "firebases", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "tenant_id", null: false
+    t.string "api_key"
+    t.string "auth_domain"
+    t.string "database_url"
+    t.string "project_id"
+    t.string "storage_bucket"
+    t.string "messaging_sender_id"
+    t.string "app_id"
+    t.string "measurement_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "inventories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
