@@ -4,6 +4,8 @@ class Tenant < ApplicationRecord
   validates :api_key, uniqueness: true
   validates :identifier, presence: true, uniqueness: true
 
+  has_one :firebase, dependent: :destroy
+
   has_many :users, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
