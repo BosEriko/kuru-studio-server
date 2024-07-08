@@ -57,7 +57,7 @@ class GraphqlController < ApplicationController
     else
       crypt = ActiveSupport::MessageEncryptor.new(Rails.application.credentials.secret_key_base.byteslice(0..31))
       decrypted_token = crypt.decrypt_and_verify(token)
-      tenant_id = decrypted_token.gsub('tenant-id:', '').to_i
+      tenant_id = decrypted_token.gsub('tenant-id:', '')
       Tenant.find(tenant_id)
     end
   rescue ActiveSupport::MessageVerifier::InvalidSignature
