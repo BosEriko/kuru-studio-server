@@ -3,26 +3,26 @@ module Mutations
     class Create < ::Mutations::BaseMutation
       argument :product_attributes, Types::ProductAttributes, required: true
 
-      field :post, Types::ProductType, null: true
+      field :product, Types::ProductType, null: true
       field :errors, [String], null: true
 
-      def resolve(post_attributes:)
+      def resolve(product_attributes:)
         check_tenant!
         product = ::Product.new(
-          name: post_attributes[:name],
-          price: post_attributes[:name],
+          name: product_attributes[:name],
+          price: product_attributes[:price],
           tenant_id: context[:current_tenant].id
         )
 
-        if post.save
+        if product.save
           {
-            post: post,
+            product: product,
             errors: []
           }
         else
           {
-            post: nil,
-            errors: post.errors.full_messages
+            product: nil,
+            errors: product.errors.full_messages
           }
         end
       end
