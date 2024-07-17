@@ -3,6 +3,8 @@ class CreateInventories < ActiveRecord::Migration[7.0]
     create_table :inventories, id: :uuid do |t|
       t.string :name
       t.string :inventory_type, null: false
+      t.integer :amount, default: 0
+      t.string :amount_type, null: false
       t.uuid :tenant_id, null: false
 
       t.timestamps

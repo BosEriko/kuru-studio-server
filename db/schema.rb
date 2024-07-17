@@ -51,6 +51,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_12_113537) do
   create_table "inventories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name"
     t.string "inventory_type", null: false
+    t.integer "amount", default: 0
+    t.string "amount_type", null: false
     t.uuid "tenant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
