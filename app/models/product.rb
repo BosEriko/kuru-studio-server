@@ -11,6 +11,9 @@ class Product < ApplicationRecord
   has_many :carts, dependent: :destroy
   has_many :users, through: :carts
 
+  has_many :purchases, dependent: :destroy
+  has_many :orders, through: :purchases
+
   def stock
     materials.map do |material|
       material.inventory.quantity / material.required_quantity
