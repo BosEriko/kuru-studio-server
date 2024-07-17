@@ -10,14 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_06_12_113537) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_17_154315) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
 
-  create_table "carts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "addresses", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "name", null: false
+    t.string "contact_number"
+    t.string "region"
+    t.string "provice"
+    t.string "city"
+    t.string "barangay"
+    t.string "postal_code"
+    t.string "address"
+    t.boolean "is_default", default: false, null: false
     t.uuid "user_id", null: false
+    t.uuid "tenant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "carts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "quantity", default: 1, null: false
+    t.string "variety"
+    t.uuid "user_id", null: false
+    t.uuid "product_id", null: false
     t.uuid "tenant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -49,14 +68,29 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_12_113537) do
   end
 
   create_table "inventories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.string "name"
-    t.string "inventory_type", null: false
+    t.string "name", null: false
+    t.string "inventory_type", default: "material", null: false
+    t.integer "amount", default: 0, null: false
+    t.string "amount_type", default: "quantity", null: false
+    t.string "variety", default: [], array: true
+    t.string "cover_image_url"
+    t.jsonb "other_fields", default: "{}", null: false
+    t.uuid "tenant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "materials", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "product_id", null: false
+    t.uuid "inventory_id", null: false
+    t.integer "required_quantity", default: 1, null: false
     t.uuid "tenant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "orders", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "status_type", default: "order_placed", null: false
     t.uuid "user_id", null: false
     t.uuid "tenant_id", null: false
     t.datetime "created_at", null: false
@@ -75,6 +109,22 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_12_113537) do
     t.string "name"
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "PHP", null: false
+    t.string "variety", default: [], array: true
+    t.integer "discount", default: 0, null: false
+    t.string "cover_image_url"
+    t.uuid "tenant_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "purchases", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "price_cents", default: 0, null: false
+    t.string "price_currency", default: "PHP", null: false
+    t.integer "quantity", default: 1, null: false
+    t.string "variety"
+    t.uuid "order_id", null: false
+    t.uuid "user_id", null: false
+    t.uuid "product_id", null: false
     t.uuid "tenant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
