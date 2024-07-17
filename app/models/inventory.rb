@@ -1,9 +1,11 @@
 class Inventory < ApplicationRecord
   include ActsAsTenant
+
   enum inventory_type: {
     material: "material",
     product: "product",
   }
+
   enum amount_type: {
     quantity: "quantity",
     length: "length",
@@ -11,4 +13,6 @@ class Inventory < ApplicationRecord
     weight: "weight",
     area: "area",
   }
+
+  validates :amount, numericality: { only_integer: true }
 end
