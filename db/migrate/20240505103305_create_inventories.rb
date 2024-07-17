@@ -6,6 +6,8 @@ class CreateInventories < ActiveRecord::Migration[7.0]
       t.integer :amount, null: false, default: 0
       t.string :amount_type, null: false, default: "quantity"
       t.uuid :tenant_id, null: false
+      t.string :variety, array: true, default: []
+      t.jsonb :other_fields, null: false, default: '{}'
 
       t.timestamps
     end
