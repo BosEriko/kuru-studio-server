@@ -15,6 +15,7 @@ class Tenant < ApplicationRecord
   has_many :products, dependent: :destroy
   has_many :materials, dependent: :destroy
   has_many :purchases, dependent: :destroy
+  has_many :addresses, dependent: :destroy
 
   %w(blog social tracker shop group forum block).each do |feature|
     define_method("is_#{feature}_enabled?") do
