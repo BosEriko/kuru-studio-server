@@ -14,6 +14,7 @@ class Inventory < ApplicationRecord
     area: "area",
   }
 
+  validates :cover_image_url, url: true
   validates :name, presence: true
   validates :amount, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 end

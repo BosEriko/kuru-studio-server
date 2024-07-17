@@ -50,9 +50,12 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_12_113537) do
 
   create_table "inventories", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.string "name", null: false
-    t.string "inventory_type", null: false
+    t.string "inventory_type", default: "material", null: false
     t.integer "amount", default: 0, null: false
-    t.string "amount_type", null: false
+    t.string "amount_type", default: "quantity", null: false
+    t.string "variety", default: [], array: true
+    t.string "cover_image_url"
+    t.jsonb "other_fields", default: "{}", null: false
     t.uuid "tenant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -77,6 +80,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_12_113537) do
     t.string "name"
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "PHP", null: false
+    t.string "variety", default: [], array: true
+    t.integer "discount", default: 0, null: false
+    t.string "cover_image_url"
     t.uuid "tenant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

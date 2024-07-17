@@ -3,6 +3,9 @@ class CreateProducts < ActiveRecord::Migration[7.0]
     create_table :products, id: :uuid do |t|
       t.string :name
       t.monetize :price
+      t.string :variety, array: true, default: []
+      t.integer :discount, default: 0, null: false
+      t.string :cover_image_url
       t.uuid :tenant_id, null: false
 
       t.timestamps
