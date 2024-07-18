@@ -3,7 +3,7 @@ class Product < ApplicationRecord
   monetize :price_cents
   validates :discount, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 100 }
   validates :name, presence: true
-  validates :cover_image_url, url: true
+  validates :cover_image_url, format: { with: URI::DEFAULT_PARSER.make_regexp(%w[http https]), message: 'must be a valid URL' }, allow_blank: true
 
   has_many :materials, dependent: :destroy
   has_many :inventories, through: :materials
