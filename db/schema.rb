@@ -74,6 +74,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_17_154315) do
     t.string "inventory_type", default: "material", null: false
     t.integer "amount", default: 0, null: false
     t.string "amount_type", default: "quantity", null: false
+    t.string "variety"
     t.string "color"
     t.string "size"
     t.string "cover_image_url"
