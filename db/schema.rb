@@ -35,6 +35,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_17_154315) do
   create_table "carts", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.integer "quantity", default: 1, null: false
     t.string "variety"
+    t.string "color"
+    t.string "size"
     t.uuid "user_id", null: false
     t.uuid "product_id", null: false
     t.uuid "tenant_id", null: false
@@ -72,7 +74,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_17_154315) do
     t.string "inventory_type", default: "material", null: false
     t.integer "amount", default: 0, null: false
     t.string "amount_type", default: "quantity", null: false
-    t.string "variety", default: [], array: true
+    t.string "color"
+    t.string "size"
     t.string "cover_image_url"
     t.jsonb "other_fields", default: "{}", null: false
     t.uuid "tenant_id", null: false
@@ -110,6 +113,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_17_154315) do
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "PHP", null: false
     t.string "variety", default: [], array: true
+    t.string "color"
+    t.string "size"
     t.integer "discount", default: 0, null: false
     t.string "cover_image_url"
     t.uuid "tenant_id", null: false
@@ -122,6 +127,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_17_154315) do
     t.string "price_currency", default: "PHP", null: false
     t.integer "quantity", default: 1, null: false
     t.string "variety"
+    t.string "color"
+    t.string "size"
     t.uuid "order_id", null: false
     t.uuid "user_id", null: false
     t.uuid "product_id", null: false

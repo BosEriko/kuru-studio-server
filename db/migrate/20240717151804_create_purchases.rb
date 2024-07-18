@@ -4,6 +4,8 @@ class CreatePurchases < ActiveRecord::Migration[7.0]
       t.monetize :price
       t.integer :quantity, null: false, default: 1
       t.string :variety
+      t.string :color
+      t.string :size
       t.uuid :order_id, null: false
       t.uuid :user_id, null: false
       t.uuid :product_id, null: false

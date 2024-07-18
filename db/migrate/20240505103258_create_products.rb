@@ -4,6 +4,8 @@ class CreateProducts < ActiveRecord::Migration[7.0]
       t.string :name
       t.monetize :price
       t.string :variety, array: true, default: []
+      t.string :color
+      t.string :size
       t.integer :discount, default: 0, null: false
       t.string :cover_image_url
       t.uuid :tenant_id, null: false
