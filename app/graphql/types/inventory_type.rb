@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 module Types
+  class InventoryOtherFieldType < Types::BaseObject
+    field :icon, String, null: false
+    field :key, String, null: false
+    field :value, String, null: false
+  end
+
   class InventoryType < Types::BaseObject
     field :id, ID, null: false
     field :name, String, null: false
@@ -11,9 +17,8 @@ module Types
     field :color, String, null: true
     field :size, String, null: true
     field :cover_image_url, String, null: true
-    field :other_fields, GraphQL::Types::JSON, null: true
+    field :other_fields, [Types::InventoryOtherFieldType], null: true
     field :created_at, GraphQL::Types::ISO8601DateTime, null: false
     field :updated_at, GraphQL::Types::ISO8601DateTime, null: false
   end
 end
-
