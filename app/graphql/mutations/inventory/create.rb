@@ -11,6 +11,13 @@ module Mutations
         inventory = ::Inventory.new(
           name: inventory_attributes[:name],
           inventory_type: inventory_attributes[:inventory_type],
+          amount: inventory_attributes[:amount],
+          amount_type: inventory_attributes[:amount_type],
+          variety: inventory_attributes[:variety],
+          color: inventory_attributes[:color],
+          size: inventory_attributes[:size],
+          cover_image_url: inventory_attributes[:cover_image_url],
+          other_fields: inventory_attributes[:other_fields],
           tenant_id: context[:current_tenant].id
         )
 

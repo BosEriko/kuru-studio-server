@@ -10,7 +10,13 @@ module Mutations
         check_tenant!
         product = ::Product.new(
           name: product_attributes[:name],
-          price: product_attributes[:price],
+          price_cents: product_attributes[:price_cents],
+          price_currency: product_attributes[:price_currency],
+          variety: product_attributes[:variety],
+          color: product_attributes[:color],
+          size: product_attributes[:size],
+          discount: product_attributes[:discount],
+          cover_image_url: product_attributes[:cover_image_url],
           tenant_id: context[:current_tenant].id
         )
 
