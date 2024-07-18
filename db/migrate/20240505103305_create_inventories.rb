@@ -9,7 +9,7 @@ class CreateInventories < ActiveRecord::Migration[7.0]
       t.string :color
       t.string :size
       t.string :cover_image_url
-      t.jsonb :other_fields, null: false, default: '{}'
+      t.jsonb :other_fields, null: false, default: [], array: true
       t.uuid :tenant_id, null: false
 
       t.timestamps

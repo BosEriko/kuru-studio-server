@@ -78,7 +78,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_17_154315) do
     t.string "color"
     t.string "size"
     t.string "cover_image_url"
-    t.jsonb "other_fields", default: "{}", null: false
+    t.jsonb "other_fields", default: [], null: false, array: true
     t.uuid "tenant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
