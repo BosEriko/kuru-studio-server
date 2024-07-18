@@ -88,6 +88,9 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_17_154315) do
     t.uuid "product_id", null: false
     t.uuid "inventory_id", null: false
     t.integer "required_quantity", default: 1, null: false
+    t.string "variety", default: [], array: true
+    t.string "color", default: [], array: true
+    t.string "size", default: [], array: true
     t.uuid "tenant_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -114,8 +117,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_07_17_154315) do
     t.integer "price_cents", default: 0, null: false
     t.string "price_currency", default: "PHP", null: false
     t.string "variety", default: [], array: true
-    t.string "color"
-    t.string "size"
+    t.string "color", default: [], array: true
+    t.string "size", default: [], array: true
     t.integer "discount", default: 0, null: false
     t.string "cover_image_url"
     t.uuid "tenant_id", null: false
